@@ -24,6 +24,20 @@ function success(pos) {
 	  	console.log(data);
 	  	}
   	});
+
+  	jQuery.ajax({
+	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+	  	data: {
+	  		latlng: crd.latitude +',' + crd.longitude,
+	  		sensor: true
+	  	},
+	  	dataType: 'jsonp',
+	  	success: function(data) {
+	  		console.log(data);
+
+	  	}
+  	});
+
 };
 
 function error(err) {
