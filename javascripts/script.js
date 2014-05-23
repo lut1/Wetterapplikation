@@ -32,7 +32,8 @@ function success(pos) {
 	  		sensor: true
 	  	},
 	  	success: function(data) {
-	  		jQuery(".address").text()
+	  		var firstaddress = data.results[0];
+	  		jQuery(".address").text(firstaddress.formatted_address);
 	  		console.log(data);
 
 	  	}
