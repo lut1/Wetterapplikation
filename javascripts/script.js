@@ -20,6 +20,7 @@ function success(pos) {
 	  	dataType: 'jsonp',
 	  	success: function(data) {
 	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
+	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
 	  	console.log(data);
 	  	}
   	});
