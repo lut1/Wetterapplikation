@@ -10,15 +10,16 @@ function success(pos) {
   jQuery (".longitude").text(crd.longitude);
   jQuery (".latitude").text(crd.latitude);
   jQuery (".accuracy").text(crd.accuracy + ' meters.');
-  jQuery (".temperature").text(crd.temperature);
+
 
   	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + crd.latitude +',' + crd.longitude +',' + crd.temperature,
+	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + crd.latitude +',' + crd.longitude,
 	  	data: {
 	  		units : 'si'
 	  	},
 	  	dataType: 'jsonp',
 	  	success: function(data) {
+	  		  jQuery (".temperature").text(data.currently.apparentTemperature);
 	  	console.log(data);
 	  	}
   	});
