@@ -13,6 +13,9 @@ function success(pos) {
 
   	jQuery.ajax({
 	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + crd.latitude +',' + crd.longitude,
+	  	data: {
+	  		units : 'si'
+	  	},
 	  	dataType: 'jsonp',
 	  	success: function(data) {
 	  	console.log(data);
