@@ -12,7 +12,7 @@ function success(pos) {
   jQuery (".accuracy").text(crd.accuracy + ' meters.');
 
   	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/37.8267,-122.423',
+	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + crd.latitude +',' + crd.longitude,
 	  	dataType: 'jsonp',
 	  	success: function(data) {
 	  	console.log(data);
