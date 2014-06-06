@@ -11,7 +11,7 @@ function success(pos) {
   jQuery (".latitude").text(crd.latitude);
   jQuery (".accuracy").text(crd.accuracy + ' m');
 
-	getweather(crd.latitude, crd.longitude);
+	getWeather(crd.latitude, crd.longitude);
 
 
   	jQuery.ajax({
@@ -34,7 +34,7 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 };
 
-function getweather(lat, lng) {
+function getWeather(lat, lng) {
 	jQuery.ajax({
 	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
 	  	data: {
@@ -49,7 +49,6 @@ function getweather(lat, lng) {
   	});
 
 };
-
 
 
 
@@ -71,7 +70,7 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 	  	console.log(data);
 	  //	jQuery(' .custom-address-result').text(data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng);
 	  	jQuery(".address").text(address);
-	  	getweather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+	  	getWeather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
 
 	  }  		
   });
