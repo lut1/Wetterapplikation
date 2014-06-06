@@ -50,8 +50,8 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 
 // 47.448369,9.105020
 
-$(' ,custom.address').on('click', 'a', function(){
-
+jQuery(' ,custom.address').on('click', 'a', function(event){
+	event.preventDefault();
 });
 
   	jQuery.ajax({
