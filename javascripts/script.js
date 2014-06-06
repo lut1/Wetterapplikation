@@ -54,7 +54,7 @@ function getWeather(lat, lng) {
 	  	success: function(data) {
 	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
 	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
-	  		  jQuery (".weather-icon").data('icon', weatherIcons[data.currently.icon]);
+	  		  jQuery (".weather-icon").text(weatherIcons[data.currently.icon]);
 	  	console.log(data);
 	  	}
   	});
