@@ -53,13 +53,11 @@ navigator.geolocation.getCurrentPosition(success, error, options);
   	jQuery.ajax({
   		url: 'http://maps.googleapis.com/maps/api/geocode/json',
   		data: {
-  			address: 'Büelwiesstrasse 25a, 9249 Algetshausen',
+  			address: 'Büelwiesstrasse 25a, 9249 Algetshausen SG',
   			sensor: false
   		},
 	  	success: function(data) {
-	  		var firstaddress = data.results[0];
-	  		jQuery(".myaddress").text(firstaddress.formatted_address);
 	  		console.log(data);
 
 	  	}  		
-  	})
+  	});
