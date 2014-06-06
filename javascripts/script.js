@@ -69,7 +69,7 @@ jQuery(' .custom-address').on('click', 'a', function(event){
   	},
 	  success: function(data) {
 	  	console.log(data);
-	  	jQuery(' .custom-address-result').text(data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng);
+	  //	jQuery(' .custom-address-result').text(data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng);
 	  	getweather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
 
 	  }  		
