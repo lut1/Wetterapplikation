@@ -4,11 +4,17 @@ var options = {
   maximumAge: 0
 };
 
-//  clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
 var weatherIcons = {
 	'clear-day': 'B', 
 	'clear-night': 'C', 
 	'rain': 'R',
+	'snow': 'X',
+	'wind': 'F',
+	'fog': 'M',
+	'cloudy': 'Y',
+	'partly-cloudy-night': '4',
+	'partly-cloudy-day': 'H',
+	'sleet': 'W',
 
 
 };
