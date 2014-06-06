@@ -39,12 +39,22 @@ function success(pos) {
 	  	}
   	});
 
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+// 47.448369,9.105020
 
   	jQuery.ajax({
-  		url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=47.448369,9.105020/',
+  		url: 'http://maps.googleapis.com/maps/api/geocode/json',
   		data: {
-  			latlng: crd.latitude +',' + crd.longitude,
-  			sensor: true
+  			address: 'Büelwiesstrasse 25a, 9249 Algetshausen',
+  			sensor: false
   		},
 	  	success: function(data) {
 	  		var firstaddress = data.results[0];
@@ -53,11 +63,3 @@ function success(pos) {
 
 	  	}  		
   	})
-
-};
-
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-};
-
-navigator.geolocation.getCurrentPosition(success, error, options);
