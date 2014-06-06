@@ -50,6 +50,10 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 
 // 47.448369,9.105020
 
+$(' ,custom.address').on('click', 'a', function(){
+
+});
+
   	jQuery.ajax({
   		url: 'http://maps.googleapis.com/maps/api/geocode/json',
   		data: {
