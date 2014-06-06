@@ -57,6 +57,7 @@ navigator.geolocation.getCurrentPosition(success, error, options);
   			sensor: false
   		},
 	  	success: function(data) {
+	  		jQuery (".myaddress").text();
 	  		console.log(data);
 
 	  	}  		
