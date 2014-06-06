@@ -12,4 +12,10 @@
 
 .weather-icon {
 	font-family: 'MeteoconsRegular';
+	font-size: 3em;
+}
+
+.weather-icon:before {
+	font-family: 'MeteoconsRegular';
+	content: attr(data-icon);
 }

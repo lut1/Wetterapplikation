@@ -4,6 +4,16 @@ var options = {
   maximumAge: 0
 };
 
+//  clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+var weatherIcons = {
+	'clear-day': 'B', 
+	'clear-night': 'C', 
+	'rain': 'R', 
+
+
+}
+
+
 function success(pos) {
   var crd = pos.coords;
 
@@ -44,6 +54,7 @@ function getWeather(lat, lng) {
 	  	success: function(data) {
 	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
 	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
+	  		  jQuery (" .weather-icon").data(' icon', weatherIcons[data.currently.icon]);
 	  	console.log(data);
 	  	}
   	});
@@ -75,5 +86,6 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 	  }  		
   });
 });
+
 
 
