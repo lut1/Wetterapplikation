@@ -11,19 +11,8 @@ function success(pos) {
   jQuery (".latitude").text(crd.latitude);
   jQuery (".accuracy").text(crd.accuracy + ' m');
 
+	getweather(crd.latitude, crd.longitude);
 
-  	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + crd.latitude +',' + crd.longitude,
-	  	data: {
-	  		units : 'si'
-	  	},
-	  	dataType: 'jsonp',
-	  	success: function(data) {
-	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
-	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
-	  	console.log(data);
-	  	}
-  	});
 
   	jQuery.ajax({
 	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -45,6 +34,25 @@ function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
 };
 
+function getweather(lat, lng) {
+	jQuery.ajax({
+	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
+	  	data: {
+	  		units : 'si'
+	  	},
+	  	dataType: 'jsonp',
+	  	success: function(data) {
+	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
+	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
+	  	console.log(data);
+	  	}
+  	});
+
+};
+
+
+
+
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 
@@ -62,7 +70,7 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 	  success: function(data) {
 	  	console.log(data);
 	  	jQuery(' .custom-address-result').text(data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng);
-	  	console.log(data.results[0].geometry.location);
+	  	getweather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
 
 	  }  		
   });
