@@ -39,6 +39,21 @@ function success(pos) {
 	  	}
   	});
 
+
+  	jQuery.ajax({
+  		url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=47.448369,9.105020/',
+  		data: {
+  			latlng: crd.latitude +',' + crd.longitude,
+  			sensor: true
+  		},
+	  	success: function(data) {
+	  		var firstaddress = data.results[0];
+	  		jQuery(".myaddress").text(firstaddress.formatted_address);
+	  		console.log(data);
+
+	  	}  		
+  	})
+
 };
 
 function error(err) {
