@@ -8,10 +8,10 @@ var options = {
 var weatherIcons = {
 	'clear-day': 'B', 
 	'clear-night': 'C', 
-	'rain': 'R', 
+	'rain': 'R',
 
 
-}
+};
 
 
 function success(pos) {
