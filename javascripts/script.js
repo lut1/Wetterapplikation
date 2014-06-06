@@ -48,7 +48,7 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 
-jQuery(' .custom.address').on('click', 'a', function(event){
+jQuery(' .custom-address').on('click', 'a', function(event){
 	event.preventDefault();
 
 	var address = jQuery('input', ' .custom-address').val();
