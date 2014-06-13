@@ -117,7 +117,6 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 	  	}
   	});
 
-
 	 }
 });
 
