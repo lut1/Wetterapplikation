@@ -95,5 +95,20 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 
 
 
+// Manaus
+
+ 	jQuery.ajax({
+	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+		data: {
+  		address: 'Manaus',
+  		sensor: false
+  	},
+	  	success: function(data) {
+	  		console.log(data);
+
+	  	}
+  	});
+
+};
 
 
