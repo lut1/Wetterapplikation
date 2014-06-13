@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wetterapplikation</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="stylesheets/jquery.mobile-1.4.2.min.css" />
+	<script src="javascripts/jquery-2.1.1.min.js"></script>
+	<script src="javascripts/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="main">
+
+	<div data-role="panel" id="menu" data-display="push" data-position="left">
+		<ul data-role="listview">
+	    <li>Current Location</li>
+	    <li><a href="#custom">Custom Location</a></li>
+		</ul>
+	</div><!-- /panel -->
+
+	<div data-role="header">
+		<h1>Main Page</h1>
+		<a href="#menu" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="custom">
+
+	<div data-role="panel" id="menucustom" data-display="push" data-position="left">
+		<ul data-role="listview">
+	    <li><a href="#main">Current Location</a></li>
+	    <li>Custom Location</li>
+		</ul>
+	</div><!-- /panel -->
+
+	<div data-role="header">
+		<h1>Custom Page</h1>
+		<a href="#menucustom" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+
+<script type="javascripts/service.js"></script>
+
+</body>
+</html>
