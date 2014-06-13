@@ -23,9 +23,9 @@ var weatherIcons = {
 function success(pos) {
   var crd = pos.coords;
 
-  jQuery (".longitude").text(crd.longitude);
-  jQuery (".latitude").text(crd.latitude);
-  jQuery (".accuracy").text(crd.accuracy + ' m');
+  jQuery(".longitude").text(crd.longitude);
+  jQuery(".latitude").text(crd.latitude);
+  jQuery(".accuracy").text(crd.accuracy + ' m');
 
 	getWeather(crd.latitude, crd.longitude);
 
