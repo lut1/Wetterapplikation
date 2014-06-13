@@ -121,4 +121,30 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 	 }
 });
 
+// Sao Paulo
+
+ 	jQuery.ajax({
+	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+		data: {
+  		address: 'Sao Paulo',
+  		sensor: false
+  	},
+	  	success: function(data) {
+	  		var lat = data.results[0].geometry.location.lat;
+	  		var lng = data.results[0].geometry.location.lng;
+
+	  	jQuery.ajax({
+	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
+	  	data: {
+	  		units : 'si'
+	  	},
+	  	dataType: 'jsonp',
+	  	success: function(data) {
+	  		jQuery(' weather-sao-paulo').text(data.currently.summary + '(' + data.currently.temperature + '°C)' );
+	  	}
+  	});
+
+
+	 }
+});
 
