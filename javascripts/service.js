@@ -1,3 +1,20 @@
 $(document).ready(function() {
-	alert(1234);
+	var options = {
+	enableHighAccuracy: true,
+	timeout: 5000,
+	maximumAge: 0
+	};
+
+	var success = function(pos) {
+		var crd = pos.coords;
+
+  	$(' .current-position').text(crd.latitude + ', ' + crd.longitude);
+	)};
+
+	var error = function() {
+		 console.warn('ERROR(' + err.code + '): ' + err.message);
+	};
+
+	navigator.geolocation.getCurrentPosition(success, error, options);
 });
+
