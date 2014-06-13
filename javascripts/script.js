@@ -94,7 +94,6 @@ jQuery(' .custom-address').on('click', 'a', function(event){
 });
 
 
-
 // Manaus
 
  	jQuery.ajax({
@@ -119,7 +118,7 @@ jQuery(' .custom-address').on('click', 'a', function(event){
   	});
 
 
-	  	}
+	 }
 });
 
 
