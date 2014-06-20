@@ -26,6 +26,8 @@ $(document).ready(function() {
 		} 
 
 		console.log(localStorage.getItem('positon'));
+		console.log(JSON.parse(localStorage.getItem('positon'));
+
 
 		$.ajax({
 			url: 'https://maps.googleapis.com/maps/api/geocode/json',
