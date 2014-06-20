@@ -5,8 +5,13 @@ $(document).ready(function() {
 		maximumAge: 0
 	};
 
-	var success = function(pos) {
-		var crd = pos.coords;
+	// window.test=1; // Globale Variable deklarieren
+
+	var getAddress = function(pos) {
+		if (typeof pos === 'undefined') {
+			window.crd=pos.coords;
+		}
+
 
 		$.ajax({
 			url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -27,13 +32,19 @@ $(document).ready(function() {
 		console.warn('ERROR(' + err.code + '): ' + err.message);
 	};
 
-	navigator.geolocation.getCurrentPosition(success, error, options);
+	navigator.geolocation.getCurrentPosition(getAddress, error, options);
 
 
 	$(document).on('change', ' .js-language', function() {
 		console.log($(this).val());
 
-	navigator.geolocation.getCurrentPosition(success, error, options);
+		localStorage.getItem()
+		localStorage.setItem()
+
+		localStorage['language'] = $(this).val();
+
+		getAddress();
+
 
 
 	});
