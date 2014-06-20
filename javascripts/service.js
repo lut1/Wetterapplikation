@@ -5,15 +5,14 @@ $(document).ready(function() {
 		maximumAge: 0
 	};
 
-	// window.test=1; // Globale Variable deklarieren
-
+	// window.test=1; Globale Variable deklarieren
 
 	// Default Sprache einstellen
-	if(localStorage.getItem('language') === null) {
+	if (localStorage.getItem('language') === null) {
 		localStorage.setItem('language', 'de');
 	}
 
-	// Default Position setzen
+	// Default position setzen
 	if (localStorage.getItem('position') === null) {
 		localStorage.setItem('position', null);
 	}
@@ -21,20 +20,16 @@ $(document).ready(function() {
 	var getAddress = function(pos) {
 		if (typeof pos !== 'undefined') {
 			localStorage.setItem('position', JSON.stringify(pos.coords));
-		} 
+		}
 
 		var crd = JSON.parse(localStorage.getItem('position'));
-
-		console.log(localStorage.getItem('position'));
-		console.log(JSON.parse(localStorage.getItem('position')));
-
 
 		$.ajax({
 			url: 'https://maps.googleapis.com/maps/api/geocode/json',
 			data: {
 				latlng: crd.latitude + ',' + crd.longitude,
 				sensor: true,
-				language: localStorage['localStorage']
+				language: localStorage['language']
 			},
 			success: function(data) {
 				$('.js-current-address').text(data.results[0].formatted_address);
@@ -50,15 +45,11 @@ $(document).ready(function() {
 
 	navigator.geolocation.getCurrentPosition(getAddress, error, options);
 
-	$(document).on('change', ' .js-language', function() {
+	$(document).on('change', '.js-language', function(e) {
 		localStorage['language'] = $(this).val();
 
-		var pos= JSON.parse(localStorage.getItem('position'));
-
 		getAddress();
-
 	});
 
 	$('.js-language').val(localStorage.getItem('language'));
-
 });
