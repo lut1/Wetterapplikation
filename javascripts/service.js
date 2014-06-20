@@ -5,6 +5,18 @@ $(document).ready(function() {
 	maximumAge: 0
 	};
 
+	$.ajax({
+		url: 'https://maps.googleapis.com/maps/api/geocode/json',
+		data: {
+			latlng: crd.latitude + ',' + crd.longitude,
+			sensor: true
+		},
+		success: function(data) {
+			$('.js-address').text(data.results[0].formatted_address);
+		}
+	});
+	
+
 	var success = function(pos) {
 		var crd = pos.coords;
 
@@ -17,4 +29,5 @@ $(document).ready(function() {
 
 	navigator.geolocation.getCurrentPosition(success, error, options);
 });
+
 
