@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 	});
 
-	$('.js-language').each(function() {
+	$('.js-language option').each(function() {
 		if ($(this).val() === localStorage.getItem('language')) {
 			$(this).attr('selected', true);
 		}
