@@ -7,6 +7,10 @@ $(document).ready(function() {
 
 	// window.test=1; // Globale Variable deklarieren
 
+	if(localStorage.getItem('language') === null) {
+		localStorage.setItem('language') = 'de';
+	}
+
 	var getAddress = function(pos) {
 		if (typeof pos === 'undefined') {
 			window.crd=pos.coords;
@@ -18,7 +22,7 @@ $(document).ready(function() {
 			data: {
 				latlng: crd.latitude + ',' + crd.longitude,
 				sensor: true,
-				language: 'ar'
+				language: localStorage['localStorage']
 			},
 			success: function(data) {
 				$('.js-current-address').text(data.results[0].formatted_address);
