@@ -15,7 +15,7 @@ $(document).ready(function() {
 	}
 
 	var getAddress = function(pos) {
-		if (typeof pos === 'undefined') {
+		if (typeof pos !== 'undefined') {
 			window.crd=pos.coords;
 		}
 
