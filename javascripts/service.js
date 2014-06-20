@@ -51,14 +51,11 @@ $(document).ready(function() {
 	navigator.geolocation.getCurrentPosition(getAddress, error, options);
 
 	$(document).on('change', ' .js-language', function() {
-		console.log($(this).val());
-
-		localStorage.getItem()
-		localStorage.setItem()
-
 		localStorage['language'] = $(this).val();
 
-		getAddress();
+		var pos= JSON.parse(localStorage.getItem('position'));
+
+		getAddress(pos);
 
 
 
