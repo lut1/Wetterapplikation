@@ -9,16 +9,21 @@ $(document).ready(function() {
 
 
 	// Default Sprache einstellen
-
 	if(localStorage.getItem('language') === null) {
+		localStorage.setItem('language', 'de');
+	}
+
+	// Default Position setzen
+	if (localStorage.getItem('position') === null) {
 		localStorage.setItem('language', 'de');
 	}
 
 	var getAddress = function(pos) {
 		if (typeof pos !== 'undefined') {
 			window.crd=pos.coords;
-		}
+			localStorage.setItem('position', pos.coords);
 
+		} 
 
 		$.ajax({
 			url: 'https://maps.googleapis.com/maps/api/geocode/json',
