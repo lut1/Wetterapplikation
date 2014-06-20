@@ -5,45 +5,56 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="stylesheets/jquery.mobile-1.4.2.min.css" />
-	<script src="javascripts/jquery-2.1.1.min.js"></script>
-	<script src="javascripts/jquery.mobile-1.4.2.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 </head>
 <body>
 
+
+
+
+<!-- Startansicht -->
 <div data-role="page" id="main">
 
 	<div data-role="panel" id="menu" data-display="push" data-position="left">
 		<ul data-role="listview">
-	    <li>Current Location</li>
-	    <li><a href="#custom">Custom Location</a></li>
+			<li>Current Location</li>
+			<li><a href="#custom">Custom Location</a></li>
+			<li><a href="#settings">Settings</a></li>
 		</ul>
 	</div><!-- /panel -->
 
 	<div data-role="header">
 		<h1>Main Page</h1>
-		<a href="#menu" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+		<a href="#menu" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
-		<p>Page content goes here.</p>
+		<p>Current position: <span class="js-current-position">-</span></p>
+		<p>Current address: <span class="js-current-address">-</span></p>
 	</div><!-- /content -->
-
 </div><!-- /page -->
 
+
+
+
+
+
+<!-- Erweiterte Ansicht -->
 <div data-role="page" id="custom">
 
 	<div data-role="panel" id="menucustom" data-display="push" data-position="left">
 		<ul data-role="listview">
-	    <li><a href="#main">Current Location</a></li>
-	    <li>Custom Location</li>
+			<li><a href="#main">Current Location</a></li>
+			<li>Custom Location</li>
+			<li><a href="#settings">Settings</a></li>
 		</ul>
 	</div><!-- /panel -->
 
 	<div data-role="header">
 		<h1>Custom Page</h1>
-		<a href="#menucustom" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
-
+		<a href="#menucustom" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
@@ -53,8 +64,50 @@
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
+</div><!-- /page -->
 
-<script type="javascripts/service.js"></script>
 
+
+
+
+<!-- Settings Ansicht -->
+<div data-role="page" id="settings">
+
+	<div data-role="panel" id="menusettings" data-display="push" data-position="left">
+		<ul data-role="listview">
+			<li><a href="#main">Current Location</a></li>
+			<li><a href="#custom">Custom Location</a></li>
+			<li>Settings</li>
+		</ul>
+	</div><!-- /panel -->
+
+	<div data-role="header">
+		<h1>Settings</h1>
+		<a href="#menusettings" class="ui-btn ui-btn-left ui-btn-inline ui-mini ui-btn-icon-left ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-icon-notext">Menu</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+
+		<form>
+		<div class="ui-field-contain">
+			<label for="select-language">Language</label>
+			<select name="select-language" id="select-language" class="js-language">
+				<option value="de">Deutsch</option>
+				<option value="en">English</option>
+				<option value="it">Italiano</option>
+				<option value="es">Espagnol</option>
+			</select>
+		</div>
+		</form>
+
+	</div>
+
+</div>
+
+
+
+
+
+<script src="javascripts/service.js"></script>
 </body>
 </html>

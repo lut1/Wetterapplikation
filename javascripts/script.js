@@ -4,146 +4,131 @@ var options = {
   maximumAge: 0
 };
 
+// clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+
 var weatherIcons = {
-	'clear-day': 'B', 
-	'clear-night': 'C', 
+	'clear-day': 'B',
+	'clear-night': 'C',
 	'rain': 'R',
-	'snow': 'X',
-	'wind': 'F',
-	'fog': 'M',
-	'cloudy': 'Y',
-	'partly-cloudy-night': '4',
-	'partly-cloudy-day': 'H',
-	'sleet': 'W',
-
-
+	'partly-cloudy-night': 'I'
 };
-
 
 function success(pos) {
-  var crd = pos.coords;
+	var crd = pos.coords;
 
-  jQuery(".longitude").text(crd.longitude);
-  jQuery(".latitude").text(crd.latitude);
-  jQuery(".accuracy").text(crd.accuracy + ' m');
+	$('.js-lat').text(crd.latitude);
+	$('.js-long').text(crd.longitude);
+	$('.js-acc').text(crd.accuracy + ' m');
 
-	getWeather(crd.latitude, crd.longitude);
+	$.ajax({
+		url: 'https://maps.googleapis.com/maps/api/geocode/json',
+		data: {
+			latlng: crd.latitude + ',' + crd.longitude,
+			sensor: true
+		},
+		success: function(data) {
+			$('.js-address').text(data.results[0].formatted_address);
+		}
+	});
 
+	getWeahterData(crd.latitude, crd.longitude, function(data) {
+		$('.js-temp').text(data.currently.apparentTemperature + ' °C');
+		$('.js-windspeed').text(data.currently.windSpeed + ' m/s');
 
-  	jQuery.ajax({
-	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
-	  	data: {
-	  		latlng: crd.latitude +',' + crd.longitude,
-	  		sensor: true
-	  	},
-	  	success: function(data) {
-	  		var firstaddress = data.results[0];
-	  		jQuery(".address").text(firstaddress.formatted_address);
-	  		console.log(data);
-
-	  	}
-  	});
-
-};
+		$('.js-weather-icon').text(weatherIcons[data.currently.icon]);
+	});
+}
 
 function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-};
-
-function getWeather(lat, lng) {
-	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
-	  	data: {
-	  		units : 'si'
-	  	},
-	  	dataType: 'jsonp',
-	  	success: function(data) {
-	  		  jQuery (".temperature").text(data.currently.apparentTemperature + ' °C');
-	  		  jQuery (".windspeed").text(data.currently.windSpeed + ' m/h');
-	  		  jQuery (".weather-icon").text(weatherIcons[data.currently.icon]);
-	  	console.log(data);
-	  	}
-  	});
-
-};
-
-
+	console.warn('ERROR(' + err.code + '): ' + err.message);
+}
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
+// http://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&sensor=true_or_false
 
-jQuery(' .custom-address').on('click', 'a', function(event){
+$('.js-custom-address').on('click', 'a', function(event) {
 	event.preventDefault();
 
-	var address = jQuery('input', ' .custom-address').val();
+	var address = $('input', '.js-custom-address').val();
 
-	jQuery.ajax({
-  	url: 'http://maps.googleapis.com/maps/api/geocode/json',
-  	data: {
-  		address: address,
-  		sensor: false
-  	},
-	  success: function(data) {
-	  	console.log(data);
-	  //	jQuery(' .custom-address-result').text(data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng);
-	  	jQuery(".address").text(address);
-	  	getWeather(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
-
-	  }  		
-  });
-});
-
-
-// Manaus
-
- 	jQuery.ajax({
-	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+	$.ajax({
+		url: 'http://maps.googleapis.com/maps/api/geocode/json',
 		data: {
-  		address: 'Manaus',
-  		sensor: false
-  	},
-	  	success: function(data) {
-	  		var lat = data.results[0].geometry.location.lat;
-	  		var lng = data.results[0].geometry.location.lng;
+			address: address,
+			sensor: false
+		},
+		success: function(data) {
+			$('.js-custom-address-result').text(
+				data.results[0].geometry.location.lat +
+				',' +
+				data.results[0].geometry.location.lng
+			);
 
-	  	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
-	  	data: {
-	  		units : 'si'
-	  	},
-	  	dataType: 'jsonp',
-	  	success: function(data) {
-	  		jQuery(' weather-manaus').text(data.currently.summary + '(' + data.currently.temperature + '°C)' );
-	  	}
-  	});
+			getWeahterData(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng, function(data) {
+				$('.js-custom-address-temp').text(data.currently.apparentTemperature + ' °C');
 
-	 }
+				$('.js-custom-weather-icon').text(weatherIcons[data.currently.icon]);
+			});
+		}
+	});
 });
 
-// Sao Paulo
-
- 	jQuery.ajax({
-	  	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+var getWeahterData = function(lat, lng, callback) {
+	$.ajax({
+		url: 'https://api.forecast.io/forecast/a955df0e9afe8c822ebb3adf30265fb6/' + lat + ',' + lng,
 		data: {
-  		address: 'Sao Paulo',
-  		sensor: false
-  	},
-	  	success: function(data) {
-	  		var lat = data.results[0].geometry.location.lat;
-	  		var lng = data.results[0].geometry.location.lng;
+			units : 'si'
+		},
+		dataType: 'jsonp',
+		success: function(data) {
+			callback(data);
+		}
+	});
+};
 
-	  	jQuery.ajax({
-	  	url: 'https://api.forecast.io/forecast/2440fc192add591a5ce89da2c8939529/' + lat +',' + lng,
-	  	data: {
-	  		units : 'si'
-	  	},
-	  	dataType: 'jsonp',
-	  	success: function(data) {
-	  		jQuery(' weather-sao-paulo').text(data.currently.summary + '(' + data.currently.temperature + '°C)' );
-	  	}
-  	});
+$.ajax({
+	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+	data: {
+		address: 'Manaus',
+		sensor: false
+	},
+	success: function(data) {
+		var lat = data.results[0].geometry.location.lat;
+		var lng = data.results[0].geometry.location.lng;
 
-
-	 }
+		$.ajax({
+			url: 'https://api.forecast.io/forecast/a955df0e9afe8c822ebb3adf30265fb6/' + lat + ',' + lng,
+			data: {
+				units : 'si'
+			},
+			dataType: 'jsonp',
+			success: function(data) {
+				$('.js-weather-manaus').text(data.currently.summary + ' (' + data.currently.temperature + '°C)');
+			}
+		});
+	}
 });
 
+$.ajax({
+	url: 'https://maps.googleapis.com/maps/api/geocode/json',
+	data: {
+		address: 'Sao Paulo',
+		sensor: false
+	},
+	success: function(data) {
+		var lat = data.results[0].geometry.location.lat;
+		var lng = data.results[0].geometry.location.lng;
+
+		$.ajax({
+			url: 'https://api.forecast.io/forecast/a955df0e9afe8c822ebb3adf30265fb6/' + lat + ',' + lng,
+			data: {
+				units : 'si'
+			},
+			dataType: 'jsonp',
+			success: function(data) {
+				$('.js-weather-sao-paulo').text(data.currently.summary + ' (' + data.currently.temperature + '°C)');
+			}
+		});
+	}
+});
