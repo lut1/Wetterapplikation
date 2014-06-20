@@ -58,7 +58,11 @@ $(document).ready(function() {
 
 		getAddress();
 
-
-
 	});
+
+	$('.js-language').each(function() {
+		if ($(this).val() === localStorage.getItem('language')) {
+			$(this).attr('selected', true);
+		}
+	})
 });
