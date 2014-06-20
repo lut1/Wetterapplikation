@@ -25,9 +25,8 @@ $(document).ready(function() {
 
 		var crd = JSON.parse(localStorage.getItem('position'));
 
-
-		console.log(localStorage.getItem('positon'));
-		console.log(JSON.parse(localStorage.getItem('positon'));
+		console.log(localStorage.getItem('position'));
+		console.log(JSON.parse(localStorage.getItem('position'));
 
 
 		$.ajax({
