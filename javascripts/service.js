@@ -20,9 +20,11 @@ $(document).ready(function() {
 
 	var getAddress = function(pos) {
 		if (typeof pos != null) {
-			var crd=pos.coords;
 			localStorage.setItem('position', JSON.stringify(pos.coords));
 		} 
+
+		var crd = JSON.parse(localStorage.getItem('position'));
+
 
 		console.log(localStorage.getItem('positon'));
 		console.log(JSON.parse(localStorage.getItem('positon'));
