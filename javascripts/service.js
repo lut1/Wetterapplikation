@@ -11,7 +11,7 @@ $(document).ready(function() {
 	// Default Sprache einstellen
 
 	if(localStorage.getItem('language') === null) {
-		localStorage.setItem('language') = 'de';
+		localStorage.setItem('language', 'de');
 	}
 
 	var getAddress = function(pos) {
