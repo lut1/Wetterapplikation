@@ -20,8 +20,8 @@ $(document).ready(function() {
 
 	var getAddress = function(pos) {
 		if (typeof pos != null) {
+			var crd=pos.coords;
 			localStorage.setItem('position', JSON.stringify(pos.coords));
-
 		} 
 
 		console.log(localStorage.getItem('positon'));
