@@ -7,6 +7,9 @@ $(document).ready(function() {
 
 	// window.test=1; // Globale Variable deklarieren
 
+
+	// Default Sprache einstellen
+
 	if(localStorage.getItem('language') === null) {
 		localStorage.setItem('language') = 'de';
 	}
