@@ -19,7 +19,7 @@ $(document).ready(function() {
 	}
 
 	var getAddress = function(pos) {
-		if (typeof pos != null) {
+		if (typeof pos !== 'undefined') {
 			localStorage.setItem('position', JSON.stringify(pos.coords));
 		} 
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 		var pos= JSON.parse(localStorage.getItem('position'));
 
-		getAddress(pos);
+		getAddress();
 
 
 
