@@ -21,9 +21,11 @@ $(document).ready(function() {
 	var getAddress = function(pos) {
 		if (typeof pos !== 'undefined') {
 			window.crd=pos.coords;
-			localStorage.setItem('position', pos.coords);
+			localStorage.setItem('position', JSON.stringify(pos.coords));
 
 		} 
+
+		console.log(localStorage.getItem('positon'));
 
 		$.ajax({
 			url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -45,7 +47,6 @@ $(document).ready(function() {
 	};
 
 	navigator.geolocation.getCurrentPosition(getAddress, error, options);
-
 
 	$(document).on('change', ' .js-language', function() {
 		console.log($(this).val());
