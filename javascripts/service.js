@@ -15,12 +15,11 @@ $(document).ready(function() {
 
 	// Default Position setzen
 	if (localStorage.getItem('position') === null) {
-		localStorage.setItem('language', 'de');
+		localStorage.setItem('position', null);
 	}
 
 	var getAddress = function(pos) {
-		if (typeof pos !== 'undefined') {
-			window.crd=pos.coords;
+		if (typeof pos != null) {
 			localStorage.setItem('position', JSON.stringify(pos.coords));
 
 		} 
